@@ -7,6 +7,7 @@ import ru.netology.domain.Flight;
 import ru.netology.repository.FlightRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +19,15 @@ public class FlightManager {
         repository.save(item);
     }
 
-    public Flight[] findAllByAirports(String from, String to) {
+    public Flight[] findByAirports(String from, String to) {
         Flight[] result = repository.findByAirports(from, to);
         Arrays.sort(result);
+        return result;
+    }
+
+    public Flight[] findByDuration(String from, String to, Comparator<Flight> duration) {
+        Flight[] result = repository.findByAirports(from, to);
+        Arrays.sort(result, duration);
         return result;
     }
 }
