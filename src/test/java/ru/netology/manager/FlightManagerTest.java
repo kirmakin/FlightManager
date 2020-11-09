@@ -9,12 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FlightManagerTest {
     private FlightManager manager = new FlightManager();
-    FlightComparator duration = new FlightComparator();
+    FlightComparator value = new FlightComparator();
     private Flight first = new Flight(1, 200, "SVO", "AER", 890);
     private Flight second = new Flight(2, 500, "LED", "GTW", 1300);
     private Flight third = new Flight(3, 300, "SVO", "AER", 880);
     private Flight forth = new Flight(4, 500, "SVO", "GTW", 1380);
     private Flight fifth = new Flight(5, 700, "LED", "VVO", 7300);
+    private Flight sixth = new Flight(5, 900, "AER", "VVO", 7500);
 
     @BeforeEach
     public void setUp() {
@@ -23,6 +24,7 @@ class FlightManagerTest {
         manager.add(third);
         manager.add(forth);
         manager.add(fifth);
+        manager.add(sixth);
     }
 
         @Test
@@ -35,11 +37,29 @@ class FlightManagerTest {
     }
 
     @Test
-    void shouldSearchByAirportsAndSortByDuration() {
+    void shouldSearchByAirportsAndSortFromLessToMore() {
         String from = "SVO";
         String to = "AER";
         Flight[] expected = new Flight[]{third, first};
-        Flight[] actual = manager.findByDuration(from, to, duration);
+        Flight[] actual = manager.findByDuration(from, to, value);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindOneAirport() {
+        String from = "AER";
+        String to = "VVO";
+        Flight[] expected = new Flight[]{sixth};
+        Flight[] actual = manager.findByDuration(from, to, value);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotFindAirport() {
+        String from = "AER";
+        String to = "SVO";
+        Flight[] expected = new Flight[]{};
+        Flight[] actual = manager.findByDuration(from, to, value);
         assertArrayEquals(expected, actual);
     }
 
