@@ -3,13 +3,13 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Flight;
-
-import java.time.Duration;
+import ru.netology.domain.FlightComparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlightManagerTest {
     private FlightManager manager = new FlightManager();
+    FlightComparator duration = new FlightComparator();
     private Flight first = new Flight(1, 200, "SVO", "AER", 890);
     private Flight second = new Flight(2, 500, "LED", "GTW", 1300);
     private Flight third = new Flight(3, 300, "SVO", "AER", 880);
