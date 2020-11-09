@@ -30,4 +30,22 @@ class FlightManagerTest {
         Flight[] actual = manager.findAllByAirports(from, to);
         assertArrayEquals(expected, actual);
     }
+    @Test
+    void shouldSearchOneAirport() {
+        String from = "SVO";
+        String to = "GTW";
+        Flight[] expected = new Flight[]{forth};
+        Flight[] actual = manager.findAllByAirports(from, to);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchNoOneAirport() {
+        String from = "AER";
+        String to = "SVO";
+        Flight[] expected = new Flight[]{};
+        Flight[] actual = manager.findAllByAirports(from, to);
+        assertArrayEquals(expected, actual);
+    }
+
 }
