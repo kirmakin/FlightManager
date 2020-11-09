@@ -3,7 +3,6 @@ package ru.netology.repository;
 import ru.netology.domain.Flight;
 
 public class FlightRepository {
-
     private Flight[] items = new Flight[0];
 
     public void save(Flight item) {
