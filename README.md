@@ -1,0 +1,1 @@
+Решение [домашнего задания](https://github.com/netology-code/javaqa-homeworks/tree/master/interfaces) к занятию «Интерфейсы для организации малой связности. Обобщенное программирование (Generics)». [](https://github.com/netology-code/javaqa-homeworks/tree/master/interfaces)
